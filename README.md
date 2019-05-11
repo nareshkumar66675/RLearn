@@ -41,7 +41,7 @@ It is a Reinforcement project which uses **Q Learning**
 > DiscountFactor - 0.9
 > Episodes- 5000
 
-# Findig Treasure
+# Finding Treasure
 - These below *gifs* shows how the path is found to find the treasure.
 - Each has different starting points and ending points.
 - Obstacles are placed randomnly each time.
