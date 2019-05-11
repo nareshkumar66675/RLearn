@@ -20,7 +20,7 @@ DefaultMap = [
     ]
 
 
-class Map():
+class TreasureMap():
 
 
     def __init__(self, generate=True, customMap = None):

@@ -10,43 +10,14 @@ def CreateImage(text):
     d.text((30,30), text ,font=fnt, fill=(0,0,0))
     return img
 
-#def TrainAlgo(customData):
-#    map = mp.Map(customMap=customData)
-#    QTable = np.zeros([map.nStates,map.nActions])
-#    # QLearn Parameters
-#    eta = .628
-#    gma = .9
-#    epis = 5000
-#    rev_list = [] 
-#    for i in range(epis):
-#        state = map.clear()
-#        rAll = 0
-#        decision = False
-#        j = 0
-#       # Set Qtable
-#        while j < 99:
-#            j+=1
-#            # Choose action from Q table
-#            action = np.argmax(QTable[state,:] + np.random.randn(1,map.nActions)*(1./(i+1)))
-#            # Get New State and Reward Vlaues
-#            newState,reward,decision,_ = map.PerformAction(action)
-#            QTable[state,action] = QTable[state,action] + eta*(reward + gma*np.max(QTable[newState,:]) - QTable[state,action])
-#            rAll += reward
-#            state = newState
-#            if decision == True:
-#                break
-#        rev_list.append(rAll)
-#    print("Sum of Rewards:", str(sum(rev_list)/epis))
-
-#    return map,QTable,i
 
 def RunAlgo(customData = None):
 
-    map = mp.Map(customMap=customData)
+    map = mp.TreasureMap(customMap=customData)
     QTable = np.zeros([map.nStates,map.nActions])
     # QLearn Parameters
-    eta = .628
-    gma = .9
+    learnRate = .628
+    discountFactor = .9
     epis = 5000
     rev_list = [] 
     for i in range(epis):
@@ -61,7 +32,7 @@ def RunAlgo(customData = None):
             action = np.argmax(QTable[state,:] + np.random.randn(1,map.nActions)*(1./(i+1)))
             # Get New State and Reward Vlaues
             newState,reward,decision,_ = map.PerformAction(action)
-            QTable[state,action] = QTable[state,action] + eta*(reward + gma*np.max(QTable[newState,:]) - QTable[state,action])
+            QTable[state,action] = QTable[state,action] + learnRate*(reward + discountFactor*np.max(QTable[newState,:]) - QTable[state,action])
             rAll += reward
             state = newState
             if decision == True:
@@ -84,7 +55,7 @@ def RunAlgo(customData = None):
         frames.append(frame)
         action = np.argmax(QTable[state,:] + np.random.randn(1,map.nActions)*(1./(i+1)))
         newState,reward,decision,_ = map.PerformAction(action)
-        QTable[state,action] = QTable[state,action] + eta*(reward + gma*np.max(QTable[newState,:]) - QTable[state,action])
+        QTable[state,action] = QTable[state,action] + learnRate*(reward + discountFactor*np.max(QTable[newState,:]) - QTable[state,action])
         state = newState
     print("Step:",step)
     mapText = map.getMapText()
