@@ -46,16 +46,16 @@ It is a Reinforcement project which uses **Q Learning**
 - Each has different starting points and ending points.
 - Obstacles are placed randomnly each time.
 
-Note: GIF is slightly cropped in the right side. Tried increasing the width, but it ruins the text alignment.
-##### Sample 1
-
+Note: 
+-   GIF is slightly cropped in the right side. Tried increasing the width, but it ruins the text alignment.
+-   Only Library used is *Pillow*, to create and draw images.
+#### Sample 1
 ![](https://raw.githubusercontent.com/nareshkumar66675/RLearn/master/Visuals/FindTreasure.gif)
-
-##### Sample 2
+#### Sample 2
 
 ![](https://raw.githubusercontent.com/nareshkumar66675/RLearn/master/Visuals/FindTreasure3.gif)
 
-##### Sample 3
+#### Sample 3
 
 ![](https://raw.githubusercontent.com/nareshkumar66675/RLearn/master/Visuals/FindTreasure4.gif)
 
@@ -260,7 +260,31 @@ No of Steps : 15
 GIF generated and stored as  FindTreasure.gif
 ```
 
-
+#### 3. Creating Custom Map
+```
+Select Maps
+1. Auto Generate Map
+2. Enter Custom Map
+Select one option from above : 2
+Enter Custom Map
+Sample Map:
+S-------
+--------
+---x----
+-----x--
+---x----
+-xx---x-
+-x--x-x-
+---x---T
+Enter Line 1:S---x---
+Enter Line 2:------x-
+Enter Line 3:x-------
+Enter Line 4:--------
+Enter Line 5:-------x
+Enter Line 6:----x---
+Enter Line 7:x-------
+Enter Line 8:--T-----
+```
 
 # Project Struture
 ##### ExpMaxML
