@@ -76,17 +76,20 @@ class Map():
 
 
 
-    def printMap(self):
+    def getMapText(self):
         row, col = self.s // self.ncol, self.s % self.ncol
         desc = self.desc.tolist()
         desc = [[c.decode('utf-8') for c in line] for line in desc]
         desc[row][col] = "(M)".format(desc[row][col])
+        output = ''
         if self.lastaction is not None:
-            print("Moving ({})\n".format(["Left","Down","Right","Up"][self.lastaction]))
+            output+="   Moving {}\n".format(["LEFT","DOWN","RIGHT","UP"][self.lastaction]) #print("Moving ({})\n".format(["Left","Down","Right","Up"][self.lastaction]))
         else:
-            print("\n")
-        print("\n".join('  '.join(line) for line in desc)+"\n")
+            output+="\n" #print("\n")
 
+        output+="\n".join('  '.join(line) for line in desc)+"\n"
+        #print("\n".join('  '.join(line) for line in desc)+"\n")
+        return output
 
     
     def clear(self):
