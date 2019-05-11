@@ -82,7 +82,7 @@ class Map():
         desc = [[c.decode('utf-8') for c in line] for line in desc]
         desc[row][col] = "(M)".format(desc[row][col])
         if self.lastaction is not None:
-            print("  ({})\n".format(["Left","Down","Right","Up"][self.lastaction]))
+            print("Moving ({})\n".format(["Left","Down","Right","Up"][self.lastaction]))
         else:
             print("\n")
         print("\n".join('  '.join(line) for line in desc)+"\n")

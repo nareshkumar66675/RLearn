@@ -36,17 +36,22 @@ def RunAlgo(customData = None):
     state = map.clear()
     decision = False
     reward=0.0
-    while decision != True:
+    step = 1
+    while decision != True:  
+        print("Step:",step)
+        step = step+1
         map.printMap()
         action = np.argmax(QTable[state,:] + np.random.randn(1,map.nActions)*(1./(i+1)))
         newState,reward,decision,_ = map.PerformAction(action)
         QTable[state,action] = QTable[state,action] + eta*(reward + gma*np.max(QTable[newState,:]) - QTable[state,action])
         state = newState
+    print("Step:",step)
     map.printMap()
     if reward==0.0:
         print("Failed Attempt")
     else:
         print("Success Attempt")
+    print("No of Steps :",step)
 
 def GetCustomMap():
     print("Enter Custom Map")
@@ -62,8 +67,8 @@ def GetCustomMap():
 
     return cMap
 
-print(" Reinforcement Learning using QLearn")
-print(" Map Legend ")
+print("Reinforcement Learning using QLearn")
+print("Map Legend ")
 print("S: Start \nx: Obstacle \n-:Free Path \nT: Treasure \n(M): Current Position \n")
 
 print("-----------------------------------------------\n\n")

@@ -1,13 +1,9 @@
 import numpy as np
 
+#Create Random Map
 def generate_random_map(size=8, p=0.8):
-    """Generates a random valid map (one that has a path from start to goal)
-    :param size: size of each side of the grid
-    :param p: probability that a tile is frozen
-    """
     valid = False
 
-    # DFS to check that it's a valid path.
     def is_valid(res):
         frontier, discovered = [], set()
         frontier.append((0,0))
@@ -36,10 +32,6 @@ def generate_random_map(size=8, p=0.8):
     return ["".join(x) for x in res]
 
 def categorical_sample(prob_n, np_random):
-    """
-    Sample from categorical distribution
-    Each row specifies class probabilities
-    """
     prob_n = np.asarray(prob_n)
     csprob_n = np.cumsum(prob_n)
     return (csprob_n > np_random.rand()).argmax()
